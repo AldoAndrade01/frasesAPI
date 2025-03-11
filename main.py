@@ -3,6 +3,15 @@ import random
 
 app = FastAPI()
 
+# Configuración de CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://bookblogv1.netlify.app/"],  # Solo permite este dominio
+    allow_credentials=True,
+    allow_methods=["GET"],  # Métodos permitidos (GET en este caso)
+    allow_headers=["*"],  # Permite todos los headers
+)
+
 # Lista de frases motivadoras con autores
 motivational_quotes = [
     {"quote": "El éxito es la suma de pequeños esfuerzos repetidos día tras día.", "author": "Robert Collier"},
