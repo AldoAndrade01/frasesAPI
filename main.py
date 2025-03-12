@@ -7,10 +7,13 @@ app = FastAPI()
 # Configuración de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://bookblogv1.netlify.app/"],  # Solo permite este dominio
+    allow_origins=[
+        "http://localhost:5173",  # Permitir peticiones desde el entorno local de Vite
+        "https://bookblogv1.netlify.app"  # Producción en Netlify
+    ],
     allow_credentials=True,
-    allow_methods=["GET"],  # Métodos permitidos (GET en este caso)
-    allow_headers=["*"],  # Permite todos los headers
+    allow_methods=["GET"],
+    allow_headers=["*"],
 )
 
 # Lista de frases motivadoras con autores
